@@ -1,41 +1,65 @@
+/*
+white #F4F1DE
+yellow #F2CC8F
+orange #E07A5F
+green #81B29A
+blue #3D405B
+*/
+
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  max-width: 1200px;
   text-align: center;
+  float: middle;
+  height: 100%
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.ladderHead > button {
+  background-color: #F2CC8F;
+  width: 80%;
+  height: 10%
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ladderTail > button {
+  background-color: #E07A5F;
+  width: 80%;
+  height: 10%
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.delete {
+  height: 10%;
 }
 
-.card {
-  padding: 2em;
+.line {
+  background-color: #81B29A;
+  width: 5px;
+  height: 40%;
+  display: inline-block;
 }
 
-.read-the-docs {
-  color: #888;
+.column {
+  display: inline-block;
+  height: 100%;
+}
+
+.ladder {
+  grid-auto-rows: auto;
+  width: 100vw;
+  height: 200px;
+}
+
+#plusButton {
+  vertical-align: middle;
+}
+
+.plus {
+  clear: both;
+}
+
+main {
+  height: 100%;
+}
+
+.foot {
+  display: block;
 }

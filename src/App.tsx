@@ -2,32 +2,58 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
+type Column = { head: string, tail: string };
+
+const newColumn = (head='name', tail='tail') => ({ head, tail });
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [ columns, setColumns ] = useState<Column[]>([newColumn(), newColumn(), newColumn()])
+  
+  const addColumn = () => {
+    setColumns([...columns, newColumn()])
+  }
+  
+  const deleteColumn = (idx: number) => {
+    if (idx < columns.length && idx >= 0)
+      setColumns(columns.filter((_, i) => i != idx))
+  }
+
+  const [ sampleInput, setSampleInput ] = useState('')
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <>
+    <main>  
+      <h1> Welcome to GHOSTLEG.io </h1>
+
+      <div className='ladder'>
+        { columns.map(({ head, tail }, idx) => (
+          <div className='column'>
+            <div className='ladderHead'>
+              <button>{head}</button>
+            </div>
+            <div className='line'>
+            </div>
+            <div className='ladderTail'>
+              <button>{tail}</button>
+            </div>
+            <div className='delete'>
+              <button onClick = {() => deleteColumn(idx)}>-</button>
+            </div>
+          </div>
+        )) }
+
+        <div className='column' id='plusButton'>
+          <button onClick = {addColumn} >+</button>
+        </div>
+        
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    </main>
+
+    <div className='foot'>
+      <h3> contact us </h3>
     </div>
+
+    </>
   )
 }
 
